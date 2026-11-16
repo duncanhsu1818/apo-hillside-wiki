@@ -2,7 +2,8 @@
 
 用白話整理「山坡地安全」的小網站：怎樣算山坡地、土石流黃色和紅色警戒差在哪、哪些山坡地不能蓋房子、受災後可以申請什麼。每一頁都附上法規或官方資料的原文出處。
 
-- 網站：`https://<你的 GitHub 帳號>.github.io/apo-hillside-wiki/`（開啟 GitHub Pages 後的網址）
+- 網站：https://duncanhsu1818.github.io/apo-hillside-wiki/
+- 原始碼：https://github.com/duncanhsu1818/apo-hillside-wiki
 - 專案規則：[AGENTS.md](AGENTS.md)
 
 ## 這個專案的重點：先寫規則，再讓 AI 照規則做頁面
