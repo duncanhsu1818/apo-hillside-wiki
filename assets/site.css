@@ -1,0 +1,619 @@
+/* =============================================================
+   assets/site.css：阿坡伯山坡地小百科的全站樣式
+   規則見 AGENTS.md 第二節：頁面只能用這裡的變數與元件。
+   要新增元件、顏色或字體，先問使用者，改完記在 log.md。
+   ============================================================= */
+
+/* ---------- 1. 變數：顏色、字體、字級、寬度 ---------- */
+:root {
+  color-scheme: light dark;
+
+  --paper: #f1f4ee;      /* 底色：地形圖用紙 */
+  --paper-2: #e3e9df;    /* 引文、表頭 */
+  --ink: #1d2a24;        /* 主要文字：松墨 */
+  --ink-2: #4a5a52;      /* 次要文字 */
+  --rule: #c5cec2;       /* 分隔線 */
+  --contour: #8c5f34;    /* 等高線棕：裝飾線、步驟編號、阿坡伯說 */
+  --water: #1a6285;      /* 水系藍：連結、焦點框 */
+  --green: #2d7a45;      /* 燈號專用 */
+  --yellow: #e5b51e;     /* 燈號專用 */
+  --yellow-ink: #33290a; /* 黃色燈號上的字 */
+  --red: #b3261e;        /* 燈號專用 */
+  --on-strong: #ffffff;  /* 綠色、紅色燈號上的字 */
+
+  --font-body: "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+  --font-hand: "LXGW WenKai TC", "Kaiti TC", "BiauKai", "DFKai-SB", serif;
+  --font-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.5rem;
+
+  --measure: 36em;       /* 內文最寬約 36 個中文字 */
+  --wide: 70rem;         /* 首頁內容最寬 */
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* 雙線等高線，當作遮罩使用，顏色取 --contour */
+  --contour-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='16' viewBox='0 0 120 16'%3E%3Cpath d='M0 6C10 2 20 2 30 6S50 10 60 6S80 2 90 6S110 10 120 6' fill='none' stroke='black' stroke-width='1.4'/%3E%3Cpath d='M0 12C10 9 20 9 30 12S50 15 60 12S80 9 90 12S110 15 120 12' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141c18;
+    --paper-2: #1e2823;
+    --ink: #e2eae4;
+    --ink-2: #a6b6ad;
+    --rule: #34433b;
+    --contour: #c9995f;
+    --water: #7cc1e0;
+    --green: #5cb27a;
+    --yellow: #e8bf3a;
+    --yellow-ink: #2a2200;
+    --red: #e0675c;
+    --on-strong: #141c18;
+  }
+}
+
+/* ---------- 2. 基本 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 112.5%; /* 基準字級 18px */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.85;
+}
+
+main { flex: 1 0 auto; }
+img, svg { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+
+a {
+  color: var(--water);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 3px solid var(--water);
+  outline-offset: 3px;
+}
+
+::selection { background: var(--yellow); color: var(--yellow-ink); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+.skip-link:focus { top: 0.5rem; }
+
+/* ---------- 3. 網站上方列與頁尾 ---------- */
+.site-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding: 0.85rem var(--gutter);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-bar__home {
+  font-family: var(--font-hand);
+  font-size: var(--step-1);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-bar__nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: var(--step--1);
+}
+.site-bar__nav a { color: var(--ink-2); text-decoration: none; }
+.site-bar__nav a:hover { color: var(--ink); text-decoration: underline; }
+
+.site-foot {
+  margin-top: 3.5rem;
+  padding: 1.75rem var(--gutter) 2.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: var(--step--1);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+.site-foot p { max-width: var(--wide); margin: 0 auto 0.4rem; }
+.site-foot__urgent { color: var(--ink); font-weight: 700; }
+
+/* 等高線裝飾線（主題頁標題下方、首頁主視覺下方） */
+.contour-rule,
+.page-head::after {
+  display: block;
+  height: 16px;
+  background: var(--contour);
+  opacity: 0.75;
+  -webkit-mask: var(--contour-line) repeat-x left center / 120px 16px;
+  mask: var(--contour-line) repeat-x left center / 120px 16px;
+}
+
+/* ---------- 4. 主題頁 ---------- */
+.page {
+  width: 100%;
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 2.25rem var(--gutter) 0;
+}
+
+.crumbs {
+  margin: 0 0 1.25rem;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+.crumbs a { color: inherit; }
+
+.page-head h1 {
+  margin: 0 0 1rem;
+  font-family: var(--font-hand);
+  font-size: clamp(1.7rem, 1.1rem + 2.6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  /* 優先在「，」「、」換行，避免把詞拆開；真的放不下才任意斷行 */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.lead {
+  margin: 0 0 0.9rem;
+  font-size: var(--step-1);
+  line-height: 1.75;
+}
+
+.meta {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.page-head::after {
+  content: "";
+  margin-top: 1.25rem;
+}
+
+/* 阿坡伯說：一頁一則，像筆記本邊上的手寫提醒 */
+.apo-says {
+  margin: 2rem 0 0;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 3px solid var(--contour);
+}
+.apo-says__who {
+  margin: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--contour);
+}
+.apo-says__line {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-hand);
+  font-size: var(--step-1);
+  line-height: 1.7;
+}
+
+.topic section { margin-top: 2.75rem; }
+
+.topic h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-hand);
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.topic section h2:not(:first-child) { margin-top: 2.5rem; }
+
+.topic h3 {
+  margin: 1.75rem 0 0.4rem;
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+/* 預設段落與清單（用 :where 降低權重，元件 class 一定蓋得過） */
+:where(.topic) p { margin: 0 0 1em; }
+:where(.topic) :is(ul, ol):not([class]) { margin: 0 0 1em; padding-left: 1.4em; }
+:where(.topic) li + li { margin-top: 0.35em; }
+
+/* ---------- 5. 內容元件（AGENTS.md 第二節的元件表） ---------- */
+
+/* 法條或官方原句 */
+.law {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--paper-2);
+  border-left: 4px solid var(--ink-2);
+}
+.law p { margin: 0 0 0.6em; }
+.law footer { font-size: var(--step--1); color: var(--ink-2); }
+.law cite { font-style: normal; }
+
+/* 例外、限制、容易誤會的地方 */
+.note {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.note__title { margin: 0 0 0.3rem; font-weight: 700; }
+.note p:last-child { margin-bottom: 0; }
+
+/* 表格 */
+.table-wrap { margin: 1.5rem 0; overflow-x: auto; }
+
+.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.data caption {
+  caption-side: top;
+  padding: 0 0 0.5rem;
+  text-align: left;
+  font-weight: 700;
+}
+.data th,
+.data td {
+  padding: 0.55rem 0.9rem 0.55rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.data thead th { border-bottom: 2px solid var(--ink-2); white-space: nowrap; }
+.data tbody th { min-width: 4.6em; }
+.data .num { text-align: right; white-space: nowrap; }
+
+/* 自繪示意圖：SVG 只能用下面的 svg-* class 上色 */
+.diagram { margin: 2rem 0; }
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram figcaption {
+  margin-top: 0.6rem;
+  font-size: var(--step--1);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.svg-ground { fill: var(--paper-2); stroke: none; }
+.svg-surface { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.svg-line { fill: none; stroke: var(--ink-2); stroke-width: 1.5; }
+.svg-dash { fill: none; stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.svg-contour { fill: none; stroke: var(--contour); stroke-width: 1.2; stroke-opacity: 0.65; }
+.svg-water { fill: var(--water); stroke: none; }
+.svg-water-line { fill: none; stroke: var(--water); stroke-width: 1.6; stroke-linecap: round; stroke-opacity: 0.7; }
+.svg-paper { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.svg-solid { fill: var(--ink-2); stroke: none; }
+.svg-arrow { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.svg-text { fill: var(--ink); font-family: var(--font-body); font-size: 15px; }
+.svg-label { fill: var(--ink); font-family: var(--font-hand); font-size: 18px; font-weight: 700; }
+.svg-green { fill: var(--green); }
+.svg-yellow { fill: var(--yellow); }
+.svg-red { fill: var(--red); }
+
+/* 手機上圖會縮小，把圖裡的字放大一點 */
+@media (max-width: 40em) {
+  .diagram .svg-text { font-size: 17px; }
+  .diagram .svg-label { font-size: 20px; }
+}
+
+/* 警戒或行動層級（由輕到重） */
+.alert-ladder {
+  display: grid;
+  gap: 1rem;
+  margin: 1.75rem 0;
+  padding: 0;
+  list-style: none;
+}
+.level {
+  --level: var(--ink-2);
+  display: grid;
+  gap: 0.2rem 1.25rem;
+  margin: 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 8px solid var(--level);
+}
+.level--green { --level: var(--green); }
+.level--yellow { --level: var(--yellow); }
+.level--red { --level: var(--red); }
+.level__name {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: var(--step-1);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.level__when { margin: 0; font-size: var(--step--1); line-height: 1.6; color: var(--ink-2); }
+.level ul { margin: 0.35rem 0 0; padding-left: 1.2em; }
+
+@media (min-width: 40em) {
+  .level { grid-template-columns: 10.5em 1fr; grid-template-rows: auto 1fr; }
+  .level__name, .level__when { grid-column: 1; }
+  .level__when { align-self: start; }
+  .level ul { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+}
+
+/* 句子裡的燈號 */
+.badge {
+  display: inline-block;
+  padding: 0 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 700;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+.badge--green { background: var(--green); color: var(--on-strong); }
+.badge--yellow { background: var(--yellow); color: var(--yellow-ink); }
+.badge--red { background: var(--red); color: var(--on-strong); }
+
+/* 名詞解釋 */
+.terms { margin: 1.25rem 0; }
+.terms dt { font-weight: 700; }
+.terms dd { margin: 0 0 0.9rem; }
+
+/* 有順序的步驟 */
+.steps {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.steps > li {
+  position: relative;
+  margin: 0 0 1rem;
+  padding-left: 2.4rem;
+  counter-increment: step;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.15em;
+  width: 1.6rem;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--contour);
+}
+
+/* 沒有順序的檢查項目 */
+.checklist { margin: 1rem 0; padding: 0; list-style: none; }
+.checklist > li {
+  position: relative;
+  margin: 0 0 0.7rem;
+  padding-left: 2rem;
+}
+.checklist > li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.42em;
+  width: 1.05em;
+  height: 1.05em;
+  border: 2px solid var(--ink-2);
+  border-radius: 3px;
+}
+
+/* 資料來源 */
+.sources {
+  margin: 0;
+  padding-left: 1.4em;
+  font-size: var(--step--1);
+  line-height: 1.75;
+}
+.sources > li + li { margin-top: 0.6rem; }
+.raw { font-family: var(--font-code); font-size: 0.85em; word-break: break-all; }
+
+/* 相關頁面 */
+.related {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.related > li { margin: 0; padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
+.related a { font-weight: 700; }
+
+/* 上一篇、下一篇（site.js 產生） */
+.pager {
+  display: grid;
+  gap: 1rem;
+  margin: 3rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+.pager:empty { display: none; }
+.pager a { display: block; color: var(--ink); text-decoration: none; }
+.pager__label { display: block; font-size: var(--step--1); color: var(--ink-2); }
+.pager__title {
+  font-family: var(--font-hand);
+  font-size: var(--step-1);
+  color: var(--water);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+.pager a:hover .pager__title { text-decoration-thickness: 2px; }
+
+@media (min-width: 40em) {
+  .pager { grid-template-columns: 1fr 1fr; }
+  .pager__next { grid-column: 2; text-align: right; }
+}
+
+/* ---------- 6. 首頁 ---------- */
+.home-hero {
+  display: grid;
+  gap: 2rem 3rem;
+  align-items: center;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 2.75rem var(--gutter) 1.5rem;
+}
+
+@media (min-width: 54em) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    padding-top: 4rem;
+  }
+}
+
+.home-hero h1 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-hand);
+  font-size: clamp(2rem, 1.1rem + 2.8vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+  word-break: keep-all;     /* 只在標點和 <wbr> 換行 */
+  overflow-wrap: anywhere;
+}
+
+.home-hero__intro {
+  max-width: 24em;
+  margin: 0 0 1.75rem;
+  font-size: var(--step-1);
+  line-height: 1.75;
+}
+
+.home-hero__art svg { display: block; width: 100%; height: auto; }
+.home-hero__art .svg-label { font-size: 24px; }
+
+.search__label { display: block; margin-bottom: 0.4rem; font-weight: 700; }
+.search__input {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink-2);
+  border-radius: 6px;
+}
+.search__input::placeholder { color: var(--ink-2); opacity: 1; }
+.search__input:focus-visible { border-color: var(--water); outline-offset: 2px; }
+.search__status {
+  min-height: 1.85em;
+  margin: 0.5rem 0 0;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.home-rule {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.catalog-wrap {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 2rem var(--gutter) 0;
+}
+.catalog-wrap__title,
+.about h2 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-hand);
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.catalog { display: grid; gap: 2.5rem 3.5rem; }
+@media (min-width: 46em) {
+  .catalog { grid-template-columns: 1fr 1fr; }
+}
+
+.category h3 {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+.category__desc {
+  margin: 0.1rem 0 0.75rem;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.toc {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--contour);
+}
+.toc > li { padding: 0.8rem 0; border-bottom: 1px solid var(--rule); }
+.toc a { font-weight: 700; }
+.toc__summary {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--step--1);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.toc__empty { font-size: var(--step--1); color: var(--ink-2); }
+
+.about {
+  max-width: var(--wide);
+  margin: 3rem auto 0;
+  padding: 2rem var(--gutter) 0;
+  border-top: 1px solid var(--rule);
+}
+.about__intro { max-width: var(--measure); margin: 0 0 1.5rem; }
+.about .steps { display: grid; gap: 1.25rem 2.5rem; }
+.about .steps > li { margin: 0; }
+@media (min-width: 46em) {
+  .about .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.about__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 1.25rem 0 0.75rem; }
+.about__note { max-width: var(--measure); margin: 0; font-size: var(--step--1); color: var(--ink-2); }
+
+/* 首頁主視覺：地表線畫出來一次就停（使用者關閉動態效果時直接顯示） */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 1.8s ease-out 0.15s forwards;
+  }
+}
+@keyframes draw-line { to { stroke-dashoffset: 0; } }
+
+/* ---------- 7. 列印：給長輩印出來貼在家裡 ---------- */
+@media print {
+  :root {
+    --paper: #ffffff;
+    --paper-2: #f0f0f0;
+    --ink: #000000;
+    --ink-2: #333333;
+    --rule: #999999;
+    --water: #000000;
+  }
+  .site-bar__nav, .skip-link, .search, .pager, .home-hero__art { display: none !important; }
+  .page-head::after, .contour-rule { display: none; }
+  .topic a[href^="http"]::after { content: "（" attr(href) "）"; font-size: 0.8em; word-break: break-all; }
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>房子要離擋土牆多遠？｜阿坡伯山坡地小百科</title>
+  <meta name="description" content="擋土設施高 1.5 公尺以上，房子外牆至少離 2 公尺；擋土設施高 3.6 公尺以上，距離要依公式再加大。">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../data/pages.js" defer></script>
+  <script src="../assets/site.js" defer></script>
+</head>
+<body data-page="retaining-wall-distance">
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-bar">
+    <a class="site-bar__home" href="../index.html">阿坡伯山坡地小百科</a>
+    <nav class="site-bar__nav" aria-label="網站">
+      <a href="../index.html#catalog">主題目錄</a>
+      <a href="../index.html#about">關於本站</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <article class="topic">
+      <!-- 1. 頁首：h1＝清單 title，p.lead＝清單 summary，time＝清單 updated（new_page.py 會自動填好） -->
+      <header class="page-head">
+        <p class="crumbs"><a href="../index.html">首頁</a> / <a href="../index.html#cat-home">住的安全</a></p>
+        <h1>房子要離擋土牆多遠？</h1>
+        <p class="lead">擋土設施高 1.5 公尺以上，房子外牆至少離 2 公尺；擋土設施高 3.6 公尺以上，距離要依公式再加大。</p>
+        <p class="meta">最後更新 <time datetime="2026-11-14">2026-11-14</time></p>
+      </header>
+
+      <!-- 2. 阿坡伯說：一到兩句口語提醒，不放新的數字或事實 -->
+      <aside class="apo-says" aria-label="阿坡伯說">
+        <p class="apo-says__who">阿坡伯說</p>
+        <p class="apo-says__line">擋土牆越高，房子就要退得越遠，這是有算式的。</p>
+      </aside>
+
+      <!-- 3. 說明本文 -->
+      <section id="explain" aria-label="說明">
+        <h2>第 265 條怎麼規定</h2>
+        <p>建築技術規則建築設計施工編從第 260 條起，是專講山坡地建築的規定。其中第 265 條規定房子外牆和擋土設施之間要隔多遠：</p>
+        <blockquote class="law">
+          <p>基地地面上建築物外牆距離高度一點五公尺以上之擋土設施者，其建築物外牆與擋土牆設施間應有二公尺以上之距離。但建築物外牆各點至高度三點六公尺以上擋土設施間之水平距離，應依左列公式計算：……</p>
+          <footer><cite>建築技術規則建築設計施工編第 265 條</cite></footer>
+        </blockquote>
+        <p>條文裡的公式，整理成一般的寫法是：</p>
+        <p><strong>D ≥ 2 + (H − 3.6) ÷ 4</strong></p>
+        <dl class="terms">
+          <dt>H</dt>
+          <dd>擋土設施各點到坡腳的高度，單位公尺。</dd>
+          <dt>D</dt>
+          <dd>建築物外牆各點和擋土設施之間的水平距離，單位公尺。</dd>
+        </dl>
+        <p>也就是說：擋土設施高 1.5 公尺以上，外牆至少要離 2 公尺；擋土設施高 3.6 公尺以上，每再高 4 公尺，距離就要再多 1 公尺。</p>
+
+        <h2>算算看</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <caption>依第 265 條算出的最小距離（H 達 3.6 公尺以上時，D = 2 + (H − 3.6) ÷ 4）</caption>
+            <thead>
+              <tr><th scope="col">擋土設施高度 H</th><th scope="col">外牆至少要離 D</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>未滿 1.5 公尺</td><td>第 265 條沒有規定（第 264 條仍可能適用，見下一節）</td></tr>
+              <tr><td>1.5 公尺</td><td>2 公尺</td></tr>
+              <tr><td>3 公尺</td><td>2 公尺（還不到 3.6 公尺）</td></tr>
+              <tr><td>3.6 公尺</td><td>2 公尺（2 + 0 ÷ 4）</td></tr>
+              <tr><td>4 公尺</td><td>2.1 公尺（2 + 0.4 ÷ 4）</td></tr>
+              <tr><td>5 公尺</td><td>2.35 公尺（2 + 1.4 ÷ 4）</td></tr>
+              <tr><td>6 公尺</td><td>2.6 公尺（2 + 2.4 ÷ 4）</td></tr>
+              <tr><td>8 公尺</td><td>3.1 公尺（2 + 4.4 ÷ 4）</td></tr>
+              <tr><td>10 公尺</td><td>3.6 公尺（2 + 6.4 ÷ 4）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="diagram">
+          <svg role="img" aria-label="剖面圖：左邊是高度 H 的擋土設施，右邊低處有一棟房子，房子外牆到擋土設施的水平距離標示為 D" viewBox="0 0 460 250">
+            <path class="svg-ground" d="M0 70H150V190H460V250H0Z"/>
+            <path class="svg-surface" d="M0 70H150V190H460"/>
+            <rect class="svg-solid" x="136" y="70" width="14" height="120"/>
+            <circle class="svg-ground" cx="143" cy="110" r="2.5"/>
+            <circle class="svg-ground" cx="143" cy="150" r="2.5"/>
+            <rect class="svg-paper" x="250" y="100" width="110" height="90"/>
+            <rect class="svg-ground" x="268" y="120" width="22" height="18"/>
+            <rect class="svg-ground" x="320" y="120" width="22" height="18"/>
+            <rect class="svg-solid" x="296" y="150" width="18" height="40"/>
+            <path class="svg-line" d="M168 70V190M160 70H176M160 190H176"/>
+            <path class="svg-line" d="M150 196V222M250 196V222M150 212H250"/>
+            <text class="svg-label" x="182" y="136">H</text>
+            <text class="svg-label" x="200" y="240" text-anchor="middle">D</text>
+            <text class="svg-text" x="16" y="58">擋土設施</text>
+            <text class="svg-text" x="305" y="90" text-anchor="middle">建築物</text>
+            <text class="svg-text" x="178" y="184">坡腳</text>
+          </svg>
+          <figcaption>H 是擋土設施各點到坡腳的高度，D 是建築物外牆各點到擋土設施的水平距離。H 達 1.5 公尺以上，D 至少 2 公尺；H 達 3.6 公尺以上，D ≥ 2 + (H − 3.6) ÷ 4。</figcaption>
+        </figure>
+
+        <h2>還有第 264 條：看擋土牆上方的坡</h2>
+        <p>第 264 條另外規定，山坡地上的建築物到擋土牆坡腳的退縮距離，要分三種情況用公式計算：擋土牆上方沒有構造物載重、上方有構造物載重，以及擋土牆後方是順向坡。公式會用到擋土牆高度、擋土牆上方邊坡的坡度、上方構造物的載重、背填土的單位重量等數值。</p>
+        <p>最簡單的第一種情況，公式是 D1 ≥ (H ÷ 2) × (1 + tanθ)，θ 是第一進擋土牆上方邊坡的坡度。例如擋土牆高 4 公尺、上方是平地（θ = 0，tanθ = 0），D1 至少 4 ÷ 2 × (1 + 0) = 2 公尺；上方的坡越陡，tanθ 越大，距離也越大。</p>
+        <aside class="note">
+          <p class="note__title">實際設計交給專業</p>
+          <p>本頁只幫你看懂條文。真正要退多少，要由建築師或專業技師依第 264、265 條和現場條件計算。</p>
+        </aside>
+      </section>
+
+      <!-- 4. 你可以怎麼做 -->
+      <section id="todo" aria-labelledby="todo-title">
+        <h2 id="todo-title">你可以怎麼做</h2>
+        <ul class="checklist">
+          <li>量一量家旁邊擋土設施的高度（或問管委會、建商），對照上面的表，看看距離夠不夠。</li>
+          <li>要新建或增建時，請建築師或專業技師依第 264、265 條計算退縮距離。</li>
+          <li>擔心家旁邊的擋土牆，請土木、結構或大地工程技師評估，或向縣市政府詢問。</li>
+        </ul>
+      </section>
+
+      <!-- 5. 資料來源 -->
+      <section id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">資料來源</h2>
+        <ol class="sources">
+          <li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070115">建築技術規則建築設計施工編</a>（第 260、264、265 條，法規最新異動 2026-02-23）原始資料：<a class="raw" href="../raw/laws/D0070115.md">raw/laws/D0070115.md</a></li>
+        </ol>
+      </section>
+
+      <!-- 6. 相關頁面 -->
+      <section id="related" aria-labelledby="related-title">
+        <h2 id="related-title">相關頁面</h2>
+        <ul class="related">
+          <li><a href="no-build-slopes.html">哪些山坡地不能蓋房子？</a></li>
+          <li><a href="what-is-slopeland.html">怎樣才算山坡地？</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- 7. 上一篇／下一篇：由 assets/site.js 依 data/pages.js 的順序產生，這裡保持空白 -->
+    <nav class="pager" aria-label="上一篇與下一篇"></nav>
+  </main>
+
+  <footer class="site-foot">
+    <p class="site-foot__urgent">遇到危險先離開，再打 119；政府勸告或強制撤離時，請立刻配合。</p>
+    <p>本站整理自法規與政府公開資料，不是即時警報，最新狀況以中央與地方政府公告為準。</p>
+  </footer>
+</body>
+</html>

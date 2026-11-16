@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>__TITLE__｜阿坡伯山坡地小百科</title>
+  <meta name="description" content="__SUMMARY__">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../data/pages.js" defer></script>
+  <script src="../assets/site.js" defer></script>
+</head>
+<body data-page="__SLUG__">
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-bar">
+    <a class="site-bar__home" href="../index.html">阿坡伯山坡地小百科</a>
+    <nav class="site-bar__nav" aria-label="網站">
+      <a href="../index.html#catalog">主題目錄</a>
+      <a href="../index.html#about">關於本站</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <article class="topic">
+      <!-- 1. 頁首：h1＝清單 title，p.lead＝清單 summary，time＝清單 updated（new_page.py 會自動填好） -->
+      <header class="page-head">
+        <p class="crumbs"><a href="../index.html">首頁</a> / <a href="../index.html#cat-__CATEGORY_ID__">__CATEGORY_NAME__</a></p>
+        <h1>__TITLE__</h1>
+        <p class="lead">__SUMMARY__</p>
+        <p class="meta">最後更新 <time datetime="__DATE__">__DATE__</time></p>
+      </header>
+
+      <!-- 2. 阿坡伯說：一到兩句口語提醒，不放新的數字或事實 -->
+      <aside class="apo-says" aria-label="阿坡伯說">
+        <p class="apo-says__who">阿坡伯說</p>
+        <p class="apo-says__line">__APO_SAYS__</p>
+      </aside>
+
+      <!-- 3. 說明本文 -->
+      <section id="explain" aria-label="說明">
+        <!-- 範本：寫 2～4 個 h2 小節，每個數字、條號都要對得到 raw/。
+             可用元件（樣式在 assets/site.css，用法見 AGENTS.md 第二節）：
+             <blockquote class="law"><p>逐字原文</p><footer><cite>災害防救法第 24 條</cite></footer></blockquote>
+             <div class="table-wrap"><table class="data"><caption>表名</caption>…</table></div>
+             <figure class="diagram"><svg role="img" aria-label="圖在畫什麼" viewBox="…">…</svg><figcaption>說明</figcaption></figure>
+             <ol class="alert-ladder"><li class="level level--yellow"><p class="level__name">黃色警戒</p><p class="level__when">什麼時候</p><ul><li>行動</li></ul></li></ol>
+             <span class="badge badge--red">紅色警戒</span>　<aside class="note"><p class="note__title">注意</p><p>…</p></aside>
+             <dl class="terms"><dt>名詞</dt><dd>白話解釋</dd></dl> -->
+        <h2>__SECTION_TITLE__</h2>
+        <p>__PARAGRAPH__</p>
+        <h2>__SECTION_TITLE__</h2>
+        <p>__PARAGRAPH__</p>
+      </section>
+
+      <!-- 4. 你可以怎麼做 -->
+      <section id="todo" aria-labelledby="todo-title">
+        <h2 id="todo-title">你可以怎麼做</h2>
+        <!-- 範本：3～6 項具體行動。有先後順序用 ol.steps，沒有順序就改成 ul.checklist -->
+        <ol class="steps">
+          <li>__ACTION__</li>
+          <li>__ACTION__</li>
+          <li>__ACTION__</li>
+        </ol>
+      </section>
+
+      <!-- 5. 資料來源 -->
+      <section id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">資料來源</h2>
+        <!-- 範本：每筆＝官方網址＋說明＋raw 檔連結，格式見 AGENTS.md 4.3 -->
+        <ol class="sources">
+          <li><a href="__OFFICIAL_URL__">__SOURCE_NAME__</a>（__SOURCE_DETAIL__）原始資料：<a class="raw" href="../raw/__RAW_PATH__">raw/__RAW_PATH__</a></li>
+        </ol>
+      </section>
+
+      <!-- 6. 相關頁面 -->
+      <section id="related" aria-labelledby="related-title">
+        <h2 id="related-title">相關頁面</h2>
+        <!-- 範本：1～3 個其他主題頁，連結文字要和對方的標題完全相同 -->
+        <ul class="related">
+          <li><a href="__RELATED_SLUG__.html">__RELATED_TITLE__</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- 7. 上一篇／下一篇：由 assets/site.js 依 data/pages.js 的順序產生，這裡保持空白 -->
+    <nav class="pager" aria-label="上一篇與下一篇"></nav>
+  </main>
+
+  <footer class="site-foot">
+    <p class="site-foot__urgent">遇到危險先離開，再打 119；政府勸告或強制撤離時，請立刻配合。</p>
+    <p>本站整理自法規與政府公開資料，不是即時警報，最新狀況以中央與地方政府公告為準。</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阿坡伯山坡地小百科</title>
+  <meta name="description" content="用白話整理山坡地安全：怎樣算山坡地、土石流警戒、哪裡不能蓋房子、受災後的救助。每一頁都附法規與官方資料出處。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="data/pages.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body data-page="index">
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-bar">
+    <a class="site-bar__home" href="index.html">阿坡伯山坡地小百科</a>
+    <nav class="site-bar__nav" aria-label="網站">
+      <a href="#catalog">主題目錄</a>
+      <a href="#about">關於本站</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="home-hero__text">
+        <h1 id="hero-title">下大雨的晚上，<br>你知道<wbr>什麼時候<wbr>該走嗎？</h1>
+        <p class="home-hero__intro">阿坡伯把山坡地的法規和官方防災資料，整理成看得懂的白話筆記。每一頁都附上原文出處。</p>
+        <div class="search" role="search">
+          <label class="search__label" for="search">找主題</label>
+          <input class="search__input" id="search" type="search" placeholder="例如：紅色警戒、擋土牆、救助" autocomplete="off">
+          <p class="search__status" id="search-status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="home-hero__art">
+        <!-- 主視覺：山坡剖面（順向的岩層、擋土牆上的房子、坡腳的溪溝、標高 100 公尺基準線） -->
+        <svg viewBox="0 0 640 400" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="hero-ground-clip">
+              <path d="M0 92C40 80 80 74 120 80C170 88 215 118 255 156L292 184L392 186L392 246L408 248C440 262 470 290 500 318L522 338C528 352 552 358 566 344L590 326C606 316 624 310 640 306L640 400L0 400Z"/>
+            </clipPath>
+          </defs>
+          <g class="svg-water-line">
+            <path d="M150 18l-7 20M196 40l-7 20M238 12l-7 20M280 52l-7 20M322 24l-7 20M366 46l-7 20M410 16l-7 20M452 58l-7 20M494 30l-7 20M538 46l-7 20M584 18l-7 20M176 60l-7 20M300 86l-7 20M346 92l-7 20M428 80l-7 20M612 54l-7 20"/>
+          </g>
+          <path class="svg-ground" d="M0 92C40 80 80 74 120 80C170 88 215 118 255 156L292 184L392 186L392 246L408 248C440 262 470 290 500 318L522 338C528 352 552 358 566 344L590 326C606 316 624 310 640 306L640 400L0 400Z"/>
+          <g class="svg-contour" clip-path="url(#hero-ground-clip)">
+            <path d="M0 -60L640 260M0 -30L640 290M0 0L640 320M0 30L640 350M0 60L640 380M0 90L640 410M0 120L640 440M0 150L640 470M0 180L640 500M0 210L640 530M0 240L640 560M0 270L640 590M0 300L640 620M0 330L640 650M0 360L640 680M0 390L640 710"/>
+          </g>
+          <path class="svg-water" d="M524 342C531 352 551 356 564 346C552 349 536 349 524 342Z"/>
+          <path class="svg-surface hero-draw" pathLength="1000" d="M0 92C40 80 80 74 120 80C170 88 215 118 255 156L292 184L392 186L392 246L408 248C440 262 470 290 500 318L522 338C528 352 552 358 566 344L590 326C606 316 624 310 640 306"/>
+          <rect class="svg-solid" x="386" y="186" width="10" height="60"/>
+          <circle class="svg-ground" cx="391" cy="206" r="2.2"/>
+          <circle class="svg-ground" cx="391" cy="228" r="2.2"/>
+          <rect class="svg-paper" x="318" y="156" width="46" height="30"/>
+          <path class="svg-solid" d="M311 158L341 135L371 158Z"/>
+          <rect class="svg-solid" x="336" y="168" width="10" height="18"/>
+          <path class="svg-dash" d="M214 120H640"/>
+          <text class="svg-label" x="632" y="111" text-anchor="end">標高 100 公尺</text>
+        </svg>
+      </div>
+    </section>
+
+    <div class="home-rule" aria-hidden="true"><div class="contour-rule"></div></div>
+
+    <section class="catalog-wrap" aria-labelledby="catalog-title">
+      <h2 class="catalog-wrap__title" id="catalog-title">主題目錄</h2>
+      <div class="catalog" id="catalog">
+        <noscript><p>目錄需要 JavaScript 才能顯示；也可以直接打開 wiki 資料夾裡的頁面。</p></noscript>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">這個網站是照著規則長出來的</h2>
+      <p class="about__intro">每一頁都依照同一份規則 AGENTS.md 製作：一樣的段落順序、一樣的出處寫法、一樣的檢查。要新增主題時，人或 AI 照著做，就能做出風格一致、有憑有據的新頁面。</p>
+      <ol class="steps">
+        <li><strong>寫規則</strong><br>AGENTS.md 寫清楚網站目的、風格、頁面結構、命名方式，以及 AI 一定要做和不能做的事。</li>
+        <li><strong>照範本建頁</strong><br>scripts/new_page.py 依 templates/page.html 產生新頁，並登記到 data/pages.js，首頁目錄就會自動更新。</li>
+        <li><strong>自動檢查</strong><br>scripts/check_site.py 檢查段落順序、出處、連結與命名，0 個錯誤才算完成。</li>
+      </ol>
+      <p class="about__links">
+        <a data-source-file href="AGENTS.md">閱讀規則 AGENTS.md</a>
+        <a data-source-file href="raw/README.md">原始資料 raw/</a>
+        <a data-source-file href="log.md">變更紀錄 log.md</a>
+      </p>
+      <p class="about__note">阿坡伯是本站的虛構角色，代表一位熟悉山坡的長輩。他只負責提醒，事實都寫在正文並附出處。</p>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p class="site-foot__urgent">遇到危險先離開，再打 119；政府勸告或強制撤離時，請立刻配合。</p>
+    <p>本站整理自法規與政府公開資料，不是即時警報，最新狀況以中央與地方政府公告為準。</p>
+  </footer>
+</body>
+</html>
